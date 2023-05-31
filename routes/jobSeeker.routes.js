@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const JobSeeker = require("./../models /models /jobSeeker.model");
+const JobSeeker = require("./../models/JobSeeker.model");
 
-router.post("/jobSeeker", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const {
       firstName,
@@ -15,7 +15,7 @@ router.post("/jobSeeker", async (req, res, next) => {
       bio,
     } = req.body;
 
-    const createdJobSeekerProfile = await JobSeeker.creat({
+    const createdJobSeekerProfile = await JobSeeker.create({
       firstName,
       lastName,
       email,
@@ -28,9 +28,19 @@ router.post("/jobSeeker", async (req, res, next) => {
     });
     res.status(201).json(createdJobSeekerProfile);
   } catch (error) {
+    next(error);
     res
       .status(400)
       .json({ message: "Error creating the profile", error: error.message });
+  }
+});
+
+router.get("/", async (req, res, next) => {
+  try {
+    const allJobSeekers = await JobSeeker.find();
+    res.json(allJobSeekers);
+  } catch (error) {
+    next(error);
   }
 });
 

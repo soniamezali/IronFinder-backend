@@ -12,7 +12,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User.model");
 
 // Require necessary (isAuthenticated) middleware in order to control access to specific routes
-const { isAuthenticated } = require("../middleware/jwt.middleware.js");
+const { isAuthenticated } = require("../middleware/isAuthenticated");
 
 // How many rounds should bcrypt run the salt (default - 10 rounds)
 const saltRounds = 10;
@@ -21,13 +21,13 @@ const saltRounds = 10;
 router.post("/signup", (req, res, next) => {
   let data = { ...req.body };
 
-  // const { email, password, name } = req.body;
+  // const { email, password,  } = req.body;
   if (data.isJobSeeker) {
   }
 
   // Check if email or password or name are provided as empty strings
-  if (email === "" || password === "" || name === "") {
-    res.status(400).json({ message: "Provide email, password and name" });
+  if (email === "" || password === "" || firstName === "") {
+    res.status(400).json({ message: "Provide email, password and first name" });
     return;
   }
 
@@ -58,8 +58,8 @@ router.post("/signup", (req, res, next) => {
       }
 
       // If email is unique, proceed to hash the password
-      const salt = bcrypt.genSaltSync(saltRounds);
-      const hashedPassword = bcrypt.hashSync(password, salt);
+      const salt = bcrypt.genSalt(saltRounds);
+      const hashedPassword = bcrypt.hash(password, salt);
 
       // Create the new user in the database
       // We return a pending promise, which allows us to chain another `then`
@@ -129,13 +129,13 @@ router.post("/login", (req, res, next) => {
 });
 
 // GET  /auth/verify  -  Used to verify JWT stored on the client
-router.get("/verify", isAuthenticated, (req, res, next) => {
-  // If JWT token is valid the payload gets decoded by the
-  // isAuthenticated middleware and is made available on `req.payload`
-  console.log(`req.payload`, req.payload);
+// router.get("/verify", isAuthenticated, async (req, res, next) => {
+//   // If JWT token is valid the payload gets decoded by the
+//   // isAuthenticated middleware and is made available on `req.payload`
+//   console.log(`req.payload`, req.payload);
 
-  // Send back the token payload object containing the user data
-  res.status(200).json(req.payload);
-});
+//   // Send back the token payload object containing the user data
+//   res.status(200).json(req.payload);
+// });
 
 module.exports = router;
