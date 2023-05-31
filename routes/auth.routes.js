@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
+const JobSeeker = require("./../models/JobSeeker.model");
+const Recruiter = require("./../models/Recruiter.model");
 // ℹ️ Handles password encryption
 const bcrypt = require("bcrypt");
 
@@ -18,7 +19,11 @@ const saltRounds = 10;
 
 // POST /auth/signup  - Creates a new user in the database
 router.post("/signup", (req, res, next) => {
-  const { email, password, name } = req.body;
+  let data = { ...req.body };
+
+  // const { email, password, name } = req.body;
+  if (data.isJobSeeker) {
+  }
 
   // Check if email or password or name are provided as empty strings
   if (email === "" || password === "" || name === "") {
@@ -58,7 +63,12 @@ router.post("/signup", (req, res, next) => {
 
       // Create the new user in the database
       // We return a pending promise, which allows us to chain another `then`
-      return User.create({ email, password: hashedPassword, name });
+      if (data.isJobSeeker) {
+        return JobSeeker.create(data);
+      } else {
+        return Recruiter.create(data);
+      }
+      // return User.create({ email, password: hashedPassword, name });
     })
     .then((createdUser) => {
       // Deconstruct the newly created user object to omit the password
