@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const Recruiter = require("./../models /models /recruiter.model");
+const Recruiter = require("./../models/Recruiter.model");
 
-router.post("/recruiter", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const { firstName, lastName, email, password, photoProfile } = req.body;
 

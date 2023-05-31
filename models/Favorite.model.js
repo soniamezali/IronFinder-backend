@@ -2,12 +2,12 @@ const { model, Schema } = require("mongoose");
 
 const favoriteSchema = new Schema({
   jobSeeker: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "JobSeeker",
     required: true,
   },
   jobOffer: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "JobOffer",
     required: true,
   },

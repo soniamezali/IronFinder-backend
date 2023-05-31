@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const JobOffer = require("./../models /models /jobOffer.model");
+const JobOffer = require("./../models/JobOffer.model");
 
 router.post("/jobOffer", async (req, res, next) => {
   try {
@@ -15,7 +15,7 @@ router.post("/jobOffer", async (req, res, next) => {
       creator,
     } = req.body;
 
-    const createdJobOffer = await JobOffer.creat({
+    const createdJobOffer = await JobOffer.create({
       companyPhoto,
       companyLogo,
       companyName,
