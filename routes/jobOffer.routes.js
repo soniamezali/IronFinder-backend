@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const JobOffer = require("./../models/JobOffer.model");
+const JobSeeker = require("./../models/JobSeeker.model");
+const Favorite = require("./../models/Favorite.model");
+const User = require("./../models/User.model");
 
 router.post("/", async (req, res, next) => {
   try {
@@ -55,6 +58,19 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+router.get("/:id/favorite", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const myFavoritesJobOffers = await Favorite.find({ jobOffer: id }).populate(
+      "jobSeeker"
+    );
+    res.json(myFavoritesJobOffers);
+  } catch (error) {
+    next(error);
+  }
+});
+// ({ jobSeeker: id }
 
 router.patch("/:id", async (req, res, next) => {
   try {
