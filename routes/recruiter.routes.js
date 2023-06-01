@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const Recruiter = require("./../models/Recruiter.model");
+const { isAdmin } = require("./../middleware/isAdmin");
+const { isAuthenticated } = require("../middleware/isAuthenticated");
 
 // router.post("/", async (req, res, next) => {
 //   try {
@@ -20,25 +22,24 @@ const Recruiter = require("./../models/Recruiter.model");
 //   }
 // });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
   try {
     const { id } = req.params;
     const oneRecuriter = await Recruiter.findById(id);
-    console.log("Does this work?", oneRecuriter);
     res.json(oneRecuriter);
   } catch (error) {
     next(error);
   }
 });
 
-router.get("/", async (req, res, next) => {
-  try {
-    const allRecruiters = await Recruiter.find();
-    res.json(allRecruiters);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const allRecruiters = await Recruiter.find();
+//     res.json(allRecruiters);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 // router.patch("/:id", async (req, res, next) => {
 //   const { id } = req.params;

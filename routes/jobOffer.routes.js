@@ -3,8 +3,10 @@ const JobOffer = require("./../models/JobOffer.model");
 const JobSeeker = require("./../models/JobSeeker.model");
 const Favorite = require("./../models/Favorite.model");
 const User = require("./../models/User.model");
+const { isAdmin } = require("../middleware/isAdmin");
+const { isAuthenticated } = require("./../middleware/isAuthenticated");
 
-router.post("/", async (req, res, next) => {
+router.post("/", isAuthenticated, isAdmin, async (req, res, next) => {
   try {
     const {
       companyPhoto,
@@ -45,7 +47,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", isAuthenticated, async (req, res, next) => {
   try {
     const { id } = req.params;
     const oneJobOffer = await JobOffer.findById(id);
@@ -59,7 +61,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.get("/:id/favorite", async (req, res, next) => {
+router.get("/:id/favorite", isAuthenticated, async (req, res, next) => {
   try {
     const { id } = req.params;
     const myFavoritesJobOffers = await Favorite.find({ jobOffer: id }).populate(
@@ -72,7 +74,7 @@ router.get("/:id/favorite", async (req, res, next) => {
 });
 // ({ jobSeeker: id }
 
-router.patch("/:id", async (req, res, next) => {
+router.patch("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -107,7 +109,7 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
   try {
     const deletedJobOffer = await JobOffer.findByIdAndDelete(req.params.id);
     res.json({ message: `${req.params.id} has been deleted successfully ` });
