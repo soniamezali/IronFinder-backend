@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const { isAuthenticated } = require("../middleware/isAuthenticated");
+const { isAdmin } = require("./../middleware/isAdmin");
 const JobSeeker = require("./../models/JobSeeker.model");
 
 // router.post("/", async (req, res, next) => {
@@ -35,7 +37,7 @@ const JobSeeker = require("./../models/JobSeeker.model");
 //   }
 // });
 
-router.get("/", async (req, res, next) => {
+router.get("/", isAuthenticated, isAdmin, async (req, res, next) => {
   try {
     const allJobSeekers = await JobSeeker.find();
     res.json(allJobSeekers);
@@ -44,7 +46,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", isAuthenticated, async (req, res, next) => {
   try {
     const { id } = req.params;
     const oneJobSeeker = await JobSeeker.findById(id);
