@@ -5,6 +5,7 @@ const Favorite = require("./../models/Favorite.model");
 const User = require("./../models/User.model");
 const { isAdmin } = require("../middleware/isAdmin");
 const { isAuthenticated } = require("./../middleware/isAuthenticated");
+const { lowerCaseParams } = require("./../middleware/lowerCaseParams.js");
 
 router.post("/", isAuthenticated, isAdmin, async (req, res, next) => {
   try {
@@ -73,6 +74,45 @@ router.get("/:id/favorite", isAuthenticated, async (req, res, next) => {
   }
 });
 // ({ jobSeeker: id }
+
+//routes for search bar//
+
+router.get("/jobTitle/:jobTitle", lowerCaseParams, async (req, res, next) => {
+  try {
+    const job = await JobOffer.find({ jobTitle: req.params.jobTitle });
+    res.json(job);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get(
+  "/jobLocation/:jobLocation",
+  lowerCaseParams,
+  async (req, res, next) => {
+    try {
+      const job = await JobOffer.find({ jobLocation: req.params.jobLocation });
+      res.json(job);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.get(
+  "/contractType/:contractType",
+  lowerCaseParams,
+  async (req, res, next) => {
+    try {
+      const job = await JobOffer.find({
+        contractType: req.params.contractType,
+      });
+      res.json(job);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 router.patch("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
   try {
