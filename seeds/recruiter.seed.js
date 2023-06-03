@@ -1,28 +1,23 @@
+// const arrayOfRecruiter=[
 
+// {
+//     firstName:
+// }
 
+// {
+//     lastName:
+// }
 
+// {
+//     email:
+// }
 
+// {
+//     password:
+// }
 
-const arrayOfRecruiter=[
+// {
 
-{
-    firstName: 
-}
-
-{
-    lastName:
-}
-
-{
-    email:
-}
-
-{
-    password:
-}
-
-{
-
-    photoProfile:
-}
-];
+//     photoProfile:
+// }
+// ];
