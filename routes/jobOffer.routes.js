@@ -3,6 +3,7 @@ const JobOffer = require("./../models/JobOffer.model");
 const JobSeeker = require("./../models/JobSeeker.model");
 const Favorite = require("./../models/Favorite.model");
 const User = require("./../models/User.model");
+const Recruiter = require("../models/Recruiter.model");
 const { isAdmin } = require("../middleware/isAdmin");
 const { isAuthenticated } = require("./../middleware/isAuthenticated");
 const { lowerCaseParams } = require("./../middleware/lowerCaseParams.js");
@@ -28,7 +29,7 @@ router.post("/", isAuthenticated, isAdmin, async (req, res, next) => {
       jobLocation,
       contractType,
       jobDescription,
-      creator,
+      creator: req.user._id,
     });
     res.status(201).json(createdJobOffer);
   } catch (error) {
