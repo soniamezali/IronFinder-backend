@@ -1,0 +1,11 @@
+  {
+    firstName: "Michael",
+    lastName: "Brown",
+    email: "michael.brown@example.com",
+    password: "password4",
+    photoProfile: "michael-brown-profile.jpg",
+    phone: "7890123456",
+    city: "San Francisco",
+    linkedInProfile: "https://www.linkedin.com/in/michaelbrown/",
+    bio: "I am a dedicated project manager with a track record of successful implementations.",
+  },

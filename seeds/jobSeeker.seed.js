@@ -1,7 +1,6 @@
+//? is this written below ok?
 require("dotenv").config({ path: "./../.env" });
-
 require("../db/index");
-
 const JobSeeker = require("../models/JobSeeker.model");
 
 const jobSeeker = [
@@ -110,3 +109,16 @@ const jobSeeker = [
     bio: "I am a talented UX/UI designer passionate about creating intuitive user experiences.",
   },
 ];
+
+async function seekerSeed() {
+  try {
+    await JobSeeker.deleteMany();
+    await JobSeeker.create(jobSeeker);
+    console.log("Created all JobSeekers");
+    process.exit();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+seekerSeed();
