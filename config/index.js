@@ -13,7 +13,10 @@ const cookieParser = require("cookie-parser");
 // unless the request is made from the same domain, by default express wont accept POST requests
 const cors = require("cors");
 
-const FRONTEND_URL = process.env.ORIGIN || "http://localhost:5005";
+// const FRONTEND_URL = process.env.ORIGIN || "https://ironfinder.onrender.com/";
+const FRONTEND_URL = process.env.ORIGIN || "http://localhost:5174";
+console.log(FRONTEND_URL);
+// https://ironfinder.onrender.com/
 
 // Middleware configuration
 module.exports = (app) => {
@@ -27,6 +30,7 @@ module.exports = (app) => {
       origin: [FRONTEND_URL],
     })
   );
+  // app.use(cors());
 
   // In development environment the app logs
   app.use(logger("dev"));

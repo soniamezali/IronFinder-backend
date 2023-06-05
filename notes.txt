@@ -1,11 +1,8 @@
-  {
-    firstName: "Michael",
-    lastName: "Brown",
-    email: "michael.brown@example.com",
-    password: "password4",
-    photoProfile: "michael-brown-profile.jpg",
-    phone: "7890123456",
-    city: "San Francisco",
-    linkedInProfile: "https://www.linkedin.com/in/michaelbrown/",
-    bio: "I am a dedicated project manager with a track record of successful implementations.",
-  },
+
+  - do we need to use a USER model to define seed. 
+
+  - i believe ive created a .env file but it does not show
+
+  - What we have written below is something that doesn't make sense. Our frontend url is the same as what we have written for our backend url. We have the same "localhost". I would need to input the actual Frontend URL here. CORS is looking for something in the frontend but what im giving isnt correct. 
+
+  const FRONTEND_URL = process.env.ORIGIN || "http://localhost:5005"; (in: config/index.js)
