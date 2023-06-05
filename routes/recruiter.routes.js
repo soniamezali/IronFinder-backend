@@ -25,8 +25,8 @@ const { isAuthenticated } = require("../middleware/isAuthenticated");
 router.get("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
   try {
     const { id } = req.params;
-    const oneRecuriter = await Recruiter.findById(id);
-    res.json(oneRecuriter);
+    const oneRecruiter = await Recruiter.findById(id);
+    res.json(oneRecruiter);
   } catch (error) {
     next(error);
   }
