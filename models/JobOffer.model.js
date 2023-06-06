@@ -4,7 +4,7 @@ const jobOfferSchema = new Schema({
   companyPhoto: {
     type: String,
     default:
-      "https://chandigarhmetro.com/wp-content/uploads/2020/02/how-to-create-perfect-image.jpg",
+      "https://chandigarhmetro.com/wp-ontent/upload/2020/02/how-to-create-perfect-image.jpg",
   },
 
   companyLogo: {

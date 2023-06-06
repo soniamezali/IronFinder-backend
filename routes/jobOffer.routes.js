@@ -43,6 +43,7 @@ router.post("/", isAuthenticated, isAdmin, async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const allJobOffers = await JobOffer.find();
+    console.log(allJobOffers);
     res.json(allJobOffers);
   } catch (error) {
     next(error);
