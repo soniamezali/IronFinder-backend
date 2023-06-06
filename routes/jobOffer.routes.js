@@ -18,7 +18,6 @@ router.post("/", isAuthenticated, isAdmin, async (req, res, next) => {
       jobLocation,
       contractType,
       jobDescription,
-      creator,
     } = req.body;
 
     const createdJobOffer = await JobOffer.create({
