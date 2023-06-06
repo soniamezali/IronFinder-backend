@@ -30,6 +30,8 @@ const userSchema = new Schema(
       type: String,
       default: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png ",
     },
+
+    // status: enum
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
