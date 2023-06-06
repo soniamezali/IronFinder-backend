@@ -1,15 +1,13 @@
 //? is this written below ok?
-require("dotenv").config({ path: "./../.env" });
+require("dotenv").config();
 require("../db/index");
-const Recruiter = require("../models/Recruiter.model");
-
+const User = require("../models/User.model");
 const recruiter = [
   {
     firstName: "Florian",
     lastName: "Thompson",
     email: "floT@email.com",
     password: "12345",
-    photoProfile,
   },
 
   {
@@ -17,14 +15,13 @@ const recruiter = [
     lastName: "Boss",
     email: "hugoB@email.com",
     password: "12345",
-    photoProfile,
   },
 ];
 
 async function recruiterSeed() {
   try {
-    await Recruiter.deleteMany();
-    await Recruiter.create(recruiter);
+    await User.deleteMany();
+    await User.create(recruiter);
     console.log("created all recruiters");
     process.exit();
   } catch (error) {
