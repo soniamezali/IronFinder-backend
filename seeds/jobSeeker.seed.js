@@ -13,6 +13,7 @@ const jobSeeker = [
     city: "Paris",
     linkedInProfile: "https://www.linkedin.com/in/sonia-mezali-56b024246/",
     bio: "Bonjour, Je suis Sonia Mezali , je suis a la recherche d'un emploi dans le domaine de la tech.",
+    isJobSeeker: true,
   },
 
   {
@@ -24,6 +25,7 @@ const jobSeeker = [
     city: "Vincennes",
     linkedInProfile: "https://www.linkedin.com/in/antoine-breton-54baa549/",
     bio: "Bonjour, Je suis Antoine Breton , je suis a la recherche d'un emploi dans le domaine de la tech.",
+    isJobSeeker: true,
   },
 
   {
@@ -35,6 +37,7 @@ const jobSeeker = [
     city: "Vincennes",
     linkedInProfile: "https://www.linkedin.com/in/antoine-breton-54baa549/",
     bio: "Bonjour, Je suis Antoine Breton , je suis a la recherche d'un emploi dans le domaine de la tech.",
+    isJobSeeker: true,
   },
 
   {
@@ -46,6 +49,7 @@ const jobSeeker = [
     city: "Vincennes",
     linkedInProfile: "https://www.linkedin.com/in/antoine-breton-54baa549/",
     bio: "Bonjour, Je suis Antoine Breton , je suis a la recherche d'un emploi dans le domaine de la tech.",
+    isJobSeeker: true,
   },
 
   {
@@ -57,6 +61,7 @@ const jobSeeker = [
     city: "New York",
     linkedInProfile: "https://www.linkedin.com/in/johndoe/",
     bio: "I am a skilled software engineer with 5 years of experience.",
+    isJobSeeker: true,
   },
   {
     firstName: "Jane",
@@ -67,6 +72,7 @@ const jobSeeker = [
     city: "London",
     linkedInProfile: "https://www.linkedin.com/in/janesmith/",
     bio: "I am a passionate graphic designer with a keen eye for detail.",
+    isJobSeeker: true,
   },
 
   {
@@ -78,6 +84,7 @@ const jobSeeker = [
     city: "Sydney",
     linkedInProfile: "https://www.linkedin.com/in/emmajohnson/",
     bio: "I am an experienced marketing specialist with a creative approach.",
+    isJobSeeker: true,
   },
   {
     firstName: "Michael",
@@ -88,6 +95,7 @@ const jobSeeker = [
     city: "San Francisco",
     linkedInProfile: "https://www.linkedin.com/in/michaelbrown/",
     bio: "I am a dedicated project manager with a track record of successful implementations.",
+    isJobSeeker: true,
   },
   {
     firstName: "Sophia",
@@ -98,6 +106,7 @@ const jobSeeker = [
     city: "Paris",
     linkedInProfile: "https://www.linkedin.com/in/sophiawilson/",
     bio: "I am a talented UX/UI designer passionate about creating intuitive user experiences.",
+    isJobSeeker: true,
   },
 ];
 
