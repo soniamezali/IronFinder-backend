@@ -48,6 +48,7 @@ router.get("/", isAuthenticated, isAdmin, async (req, res, next) => {
 
 router.get("/:id", isAuthenticated, async (req, res, next) => {
   try {
+    console.log("JOB SEEKER ROUTE");
     const { id } = req.params;
     const oneJobSeeker = await JobSeeker.findById(id);
     if (!oneJobSeeker) {
@@ -60,42 +61,42 @@ router.get("/:id", isAuthenticated, async (req, res, next) => {
   }
 });
 
-// router.patch("/:id", async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-//     const {
-//       firstName,
-//       lastName,
-//       email,
-//       password,
-//       photoProfile,
-//       phone,
-//       city,
-//       linkedInProfile,
-//       bio,
-//     } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      photoProfile,
+      phone,
+      city,
+      linkedInProfile,
+      bio,
+    } = req.body;
 
-//     const updatedJobSeeker = await JobSeeker.findByIdAndUpdate(
-//       id,
-//       {
-//         firstName,
-//         lastName,
-//         email,
-//         password,
-//         photoProfile,
-//         phone,
-//         city,
-//         linkedInProfile,
-//         bio,
-//       },
-//       { new: true }
-//     );
-//     res.json(updatedJobSeeker);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+    const updatedJobSeeker = await JobSeeker.findByIdAndUpdate(
+      id,
+      {
+        firstName,
+        lastName,
+        email,
+        password,
+        photoProfile,
+        phone,
+        city,
+        linkedInProfile,
+        bio,
+      },
+      { new: true }
+    );
+    res.json(updatedJobSeeker);
+  } catch (error) {
+    next(error);
+  }
+});
 
 // router.delete("/:id", async (req, res, next) => {
 //   try {
