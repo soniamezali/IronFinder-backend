@@ -62,7 +62,8 @@ const { isAuthenticated } = require("../middleware/isAuthenticated");
 //   }
 // });
 
-router.get("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
+router.get("/:id", isAuthenticated, async (req, res, next) => {
+  console.log("getting inside the recruiter/id route");
   try {
     const { id } = req.params;
     const oneRecruiter = await Recruiter.findById(id);

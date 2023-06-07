@@ -32,7 +32,7 @@ async function offerSeed() {
     await JobOffer.create(jobOffer);
     // const recruiter = await Recruiter.find();
     // const recruiterOffer = jobOffer.map(jobOffer);
-    console.log("created all job offers");
+    //console.log("created all job offers");
     process.exit();
   } catch (error) {
     console.log(error);

@@ -114,7 +114,7 @@ async function seekerSeed() {
   try {
     await JobSeeker.deleteMany();
     await JobSeeker.create(jobSeeker);
-    console.log("Created all JobSeekers");
+    //console.log("Created all JobSeekers");
     process.exit();
   } catch (error) {
     console.log(error);

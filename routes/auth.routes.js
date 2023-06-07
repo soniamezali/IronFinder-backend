@@ -20,7 +20,7 @@ const saltRounds = 10;
 // POST /auth/signup  - Creates a new user in the database
 router.post("/signup", (req, res, next) => {
   let data = { ...req.body };
-  console.log(data);
+  // console.log(data);
 
   // const { email, password,  } = req.body;
   if (!data.firstName || !data.lastName || !data.email || !data.password) {
@@ -106,16 +106,16 @@ router.post("/login", (req, res, next) => {
   // Check the users collection if a user with the same email exists
   User.findOne({ email })
     .then((foundUser) => {
-      console.log(foundUser);
+      //console.log(foundUser);
       if (!foundUser) {
         // If the user is not found, send an error response
         res.status(401).json({ message: "User not found." });
         return;
       }
-      console.log(password, foundUser);
+      //console.log(password, foundUser);
       // Compare the provided password with the one saved in the database
       const passwordCorrect = bcrypt.compareSync(password, foundUser.password);
-      console.log(passwordCorrect);
+      //console.log(passwordCorrect);
 
       if (passwordCorrect) {
         // Deconstruct the user object to omit the password

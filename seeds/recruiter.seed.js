@@ -22,7 +22,7 @@ async function recruiterSeed() {
   try {
     await User.deleteMany();
     await User.create(recruiter);
-    console.log("created all recruiters");
+    //console.log("created all recruiters");
     process.exit();
   } catch (error) {
     console.log(error);

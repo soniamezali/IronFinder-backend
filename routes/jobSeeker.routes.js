@@ -37,7 +37,7 @@ const JobSeeker = require("./../models/JobSeeker.model");
 //   }
 // });
 
-router.get("/", isAuthenticated, isAdmin, async (req, res, next) => {
+router.get("/", isAuthenticated, async (req, res, next) => {
   try {
     const allJobSeekers = await JobSeeker.find();
     res.json(allJobSeekers);
@@ -48,7 +48,7 @@ router.get("/", isAuthenticated, isAdmin, async (req, res, next) => {
 
 router.get("/:id", isAuthenticated, async (req, res, next) => {
   try {
-    console.log("JOB SEEKER ROUTE");
+    //console.log("JOB SEEKER ROUTE");
     const { id } = req.params;
     const oneJobSeeker = await JobSeeker.findById(id);
     if (!oneJobSeeker) {
