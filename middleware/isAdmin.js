@@ -1,5 +1,6 @@
 const isAdmin = (req, res, next) => {
-  if (req.user.role === "admin") {
+  console.log(req.user.role);
+  if (req.user.role === "Admin") {
     next();
   } else {
     return res.status(401).json({ message: "Denied !" });

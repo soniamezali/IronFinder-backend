@@ -8,7 +8,7 @@ const { isAdmin } = require("../middleware/isAdmin");
 const { isAuthenticated } = require("./../middleware/isAuthenticated");
 const { lowerCaseParams } = require("./../middleware/lowerCaseParams.js");
 
-router.post("/", isAuthenticated, isAdmin, async (req, res, next) => {
+router.post("/", isAuthenticated, async (req, res, next) => {
   try {
     const {
       companyPhoto,
@@ -42,7 +42,7 @@ router.post("/", isAuthenticated, isAdmin, async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const allJobOffers = await JobOffer.find();
-    console.log(allJobOffers);
+    //console.log(allJobOffers);
     res.json(allJobOffers);
   } catch (error) {
     next(error);
@@ -150,7 +150,7 @@ router.patch("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
   }
 });
 
-router.delete("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
+router.delete("/:id", isAuthenticated, async (req, res, next) => {
   try {
     const deletedJobOffer = await JobOffer.findByIdAndDelete(req.params.id);
     res.json({ message: `${req.params.id} has been deleted successfully ` });
