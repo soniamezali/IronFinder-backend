@@ -28,7 +28,7 @@ const userSchema = new Schema(
 
     photoProfile: {
       type: String,
-      default: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png ",
+      default: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     },
     isJobSeeker: {
       type: Boolean,
