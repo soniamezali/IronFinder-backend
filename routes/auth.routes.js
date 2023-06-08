@@ -20,7 +20,6 @@ const saltRounds = 10;
 // POST /auth/signup  - Creates a new user in the database
 router.post("/signup", (req, res, next) => {
   let data = { ...req.body };
-  // console.log(data);
 
   // const { email, password,  } = req.body;
   if (!data.firstName || !data.lastName || !data.email || !data.password) {
@@ -75,6 +74,7 @@ router.post("/signup", (req, res, next) => {
       if (data.isJobSeeker) {
         return JobSeeker.create({ ...data, password: hashedPassword });
       } else {
+        console.log("=======");
         return Recruiter.create({ ...data, password: hashedPassword });
       }
       // return User.create({ email, password: hashedPassword, name });

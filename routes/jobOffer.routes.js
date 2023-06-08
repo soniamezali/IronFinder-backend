@@ -39,7 +39,17 @@ router.post("/", isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
+router.get("/", isAuthenticated, async (req, res, next) => {
+  try {
+    const allJobOffers = await JobOffer.find({ creator: req.user._id });
+    //console.log(allJobOffers);
+    res.json(allJobOffers);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/homepage", async (req, res, next) => {
   try {
     const allJobOffers = await JobOffer.find();
     //console.log(allJobOffers);
@@ -115,7 +125,7 @@ router.get(
   }
 );
 
-router.patch("/:id", isAuthenticated, isAdmin, async (req, res, next) => {
+router.patch("/:id", isAuthenticated, async (req, res, next) => {
   try {
     const { id } = req.params;
 
