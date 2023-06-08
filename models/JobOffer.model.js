@@ -4,7 +4,7 @@ const jobOfferSchema = new Schema({
   companyPhoto: {
     type: String,
     default:
-      "https://chandigarhmetro.com/wp-ontent/upload/2020/02/how-to-create-perfect-image.jpg",
+      "https://www.jobstreet.com.ph/career-resources/wp-content/uploads/sites/3/2014/07/Is-the-Company-Youre-Working-for-Stable.jpg",
   },
 
   companyLogo: {
