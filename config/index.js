@@ -14,7 +14,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 // const FRONTEND_URL = process.env.ORIGIN || "https://ironfinder.onrender.com/";
-const FRONTEND_URL = process.env.ORIGIN || "http://localhost:5174";
+const FRONTEND_URL = process.env.ORIGIN || "http://localhost:5173";
 console.log(FRONTEND_URL);
 // https://ironfinder.onrender.com/
 
@@ -25,11 +25,7 @@ module.exports = (app) => {
   app.set("trust proxy", 1);
 
   // controls a very specific header to pass headers from the frontend
-  app.use(
-    cors({
-      origin: [FRONTEND_URL],
-    })
-  );
+  app.use(cors({}));
   // app.use(cors());
 
   // In development environment the app logs
